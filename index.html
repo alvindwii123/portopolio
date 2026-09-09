@@ -5,83 +5,156 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portofolio - Muhammad Alvin Dwi Saputra</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color: #f8f9fa; color: #333; line-height: 1.6; padding: 20px; }
-    .container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-    header { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 25px; }
-    h1 { color: #1a73e8; font-size: 1.8rem; margin-bottom: 5px; }
-    .subtitle { color: #666; font-weight: 500; font-size: 1rem; }
-    .contact-links { margin-top: 10px; font-size: 0.9rem; }
-    .contact-links a { color: #1a73e8; text-decoration: none; margin: 0 8px; }
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 20px 10px; }
     
-    section { margin-bottom: 30px; }
-    h2 { font-size: 1.3rem; color: #202124; border-left: 4px solid #1a73e8; padding-left: 10px; margin-bottom: 15px; }
+    .container { max-width: 850px; margin: 0 auto; background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+
+    /* Header Profile */
+    header { text-align: center; border-bottom: 2px solid var(--border); padding-bottom: 30px; margin-bottom: 30px; }
+    .profile-img { width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary); margin-bottom: 15px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); }
+    h1 { color: var(--text); font-size: 2.1rem; font-weight: 800; margin-bottom: 6px; }
+    .subtitle { color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 15px; }
     
-    .skills-tag { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag { background: #e8f0fe; color: #1967d2; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
-    
-    .card { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
-    .card h3 { font-size: 1.1rem; color: #1a73e8; }
-    .card-tech { font-size: 0.8rem; color: #888; margin: 5px 0 10px 0; }
-    
+    .contact-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 15px; }
+    .btn-link { text-decoration: none; color: #fff; background: var(--primary); padding: 8px 18px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
+    .btn-link:hover { background: var(--primary-dark); }
+    .btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+    .btn-outline:hover { background: #eff6ff; }
+
+    /* Section Styling */
+    section { margin-bottom: 35px; }
+    h2 { font-size: 1.35rem; color: var(--text); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    h2::before { content: ""; display: inline-block; width: 6px; height: 22px; background: var(--primary); border-radius: 4px; }
+
+    /* Cards & Grid */
+    .skills-tag { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag { background: #eff6ff; color: var(--primary); padding: 8px 16px; border-radius: 12px; font-size: 0.88rem; font-weight: 600; border: 1px solid #dbeafe; }
+
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 15px; transition: 0.2s; }
+    .card:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .card h3 { font-size: 1.15rem; color: var(--text); }
+    .card-tech { font-size: 0.85rem; color: var(--text-muted); margin: 4px 0 12px 0; font-weight: 500; }
+
+    /* Certificate Grid */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+    .cert-card { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff; text-decoration: none; color: inherit; transition: 0.2s; }
+    .cert-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+    .cert-img { width: 100%; height: 160px; object-fit: cover; border-bottom: 1px solid var(--border); }
+    .cert-info { padding: 12px 15px; }
+    .cert-info h4 { font-size: 0.95rem; color: var(--text); margin-bottom: 4px; }
+    .cert-info p { font-size: 0.8rem; color: var(--text-muted); }
+
     @media (max-width: 600px) {
-      .container { padding: 18px; }
-      h1 { font-size: 1.5rem; }
+      .container { padding: 22px 16px; }
+      h1 { font-size: 1.6rem; }
+      .cert-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
 <div class="container">
+  
+  <!-- Header / Profil -->
   <header>
+    <!-- Ganti 'foto-profil.jpg' dengan nama file foto kamu -->
+    <img src="foto-profil.jpg" alt="Muhammad Alvin Dwi Saputra" class="profile-img" onerror="this.src='https://via.placeholder.com/140?text=Foto+Profil'">
     <h1>Muhammad Alvin Dwi Saputra</h1>
     <p class="subtitle">IT & Data Enthusiast</p>
+    
     <div class="contact-links">
-      <a href="mailto:email@domain.com">Email</a> •
-      <a href="https://linkedin.com" target="_blank">LinkedIn</a> •
-      <a href="https://github.com" target="_blank">GitHub</a>
+      <a href="mailto:mhmd.alvin96@gmail.com" class="btn-link">Email</a>
+      <a href="https://linkedin.com" target="_blank" class="btn-link btn-outline">LinkedIn</a>
+      <a href="https://github.com/alvindwii123" target="_blank" class="btn-link btn-outline">GitHub</a>
     </div>
   </header>
 
+  <!-- Tentang Saya -->
   <section>
     <h2>Tentang Saya</h2>
-    <p>Mahasiswa akhir yang berfokus pada analisis data, pengolahan citra digital, dan pengembangan aplikasi web. Terbiasa mengolah data serta menyelesaikan masalah teknis menggunakan Python.</p>
+    <p>Lulusan Teknik Informatika yang berfokus pada analisis data, pengolahan citra digital (*Digital Image Processing*), dan pemecahan masalah teknis. Memiliki pengalaman kepemimpinan dalam organisasi serta latar belakang administrasi yang teliti.</p>
   </section>
 
+  <!-- Keahlian -->
   <section>
-    <h2>Keahlian</h2>
+    <h2>Keahlian Utama</h2>
     <div class="skills-tag">
       <span class="tag">Python</span>
       <span class="tag">Digital Image Processing</span>
-      <span class="tag">Google Colab</span>
-      <span class="tag">Web Development</span>
+      <span class="tag">Analisis Data</span>
+      <span class="tag">Problem Solving</span>
       <span class="tag">SQL / Database</span>
+      <span class="tag">Microsoft Office</span>
     </div>
   </section>
 
+  <!-- Pengalaman Proyek -->
   <section>
     <h2>Pengalaman Proyek</h2>
     
     <div class="card">
-      <h3>Implementasi Pengolahan Citra Digital</h3>
+      <h3>Implementasi Pengolahan Citra Digital (DIP)</h3>
       <p class="card-tech">Tools: Python, OpenCV, Google Colab</p>
-      <p>Mengembangkan dan membandingkan metode pemrosesan citra seperti Histogram Equalization dan CLAHE untuk optimasi kualitas kontras gambar.</p>
+      <p>Mengembangkan dan membandingkan metode perataan histogram (Histogram Equalization & CLAHE) untuk mengoptimalkan kontras dan kejelasan citra digital.</p>
     </div>
 
     <div class="card">
-      <h3>Pengembangan Web Platform</h3>
-      <p class="card-tech">Tools: HTML, CSS, JavaScript, PHP</p>
-      <p>Merancang dan membangun antarmuka web interaktif yang dapat diakses secara responsif dari berbagai perangkat.</p>
+      <h3>Pengembangan Web Portofolio Responsive</h3>
+      <p class="card-tech">Tools: HTML5, CSS3, GitHub Pages</p>
+      <p>Merancang dan merilis platform web pribadi interaktif yang cepat dan optimal diakses baik dari perangkat desktop maupun HP.</p>
     </div>
   </section>
-  
+
+  <!-- Sertifikat & Penghargaan -->
+  <section>
+    <h2>Sertifikat & Pencapaian</h2>
+    <div class="cert-grid">
+      
+      <!-- Sertifikat 1 -->
+      <a href="sertifikat1.jpg" target="_blank" class="cert-card">
+        <img src="sertifikat1.jpg" alt="Sertifikat 1" class="cert-img" onerror="this.src='https://via.placeholder.com/300x160?text=Foto+Sertifikat+1'">
+        <div class="cert-info">
+          <h4>Pelatihan / Kompetisi Pencak Silat</h4>
+          <p>Penyelenggara / Tahun</p>
+        </div>
+      </a>
+
+      <!-- Sertifikat 2 -->
+      <a href="sertifikat2.jpg" target="_blank" class="cert-card">
+        <img src="sertifikat2.jpg" alt="Sertifikat 2" class="cert-img" onerror="this.src='https://via.placeholder.com/300x160?text=Foto+Sertifikat+2'">
+        <div class="cert-info">
+          <h4>Sertifikat Ketua Panitia Lomba</h4>
+          <p>Seni Budaya / Tahun</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Pendidikan -->
   <section>
     <h2>Pendidikan</h2>
     <div class="card">
       <h3>Universitas Indraprasta PGRI (UNINDRA)</h3>
-      <p class="card-tech">Teknik Informatika | S1</p>
+      <p class="card-tech">S1 Teknik Informatika</p>
+    </div>
+    <div class="card">
+      <h3>SMK Wijaya Kusuma Mandiri</h3>
+      <p class="card-tech">Administrasi Perkantoran</p>
     </div>
   </section>
+
 </div>
 
 </body>
